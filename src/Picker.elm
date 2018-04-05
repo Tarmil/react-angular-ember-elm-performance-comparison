@@ -1,14 +1,13 @@
 port module Picker exposing (main)
 
 import Html exposing (..)
-import Html.App as App
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
 
 
 
 main =
-  App.programWithFlags
+  programWithFlags
     { init = init
     , view = view
     , update = update
@@ -132,7 +131,7 @@ viewEntry : Bool -> Entry -> Html Msg
 viewEntry running { id, selected, impl } =
   li
     (if running then [ pointer ] else [ pointer, onClick (Toggle id) ])
-    [ input [ type' "checkbox", checked selected, disabled running ] []
+    [ input [ type_ "checkbox", checked selected, disabled running ] []
     , text (" " ++ impl.name ++ " " ++ impl.version)
     , span
         [ style [("color","#aaa")]
